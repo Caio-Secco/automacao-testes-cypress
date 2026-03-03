@@ -1,0 +1,24 @@
+{
+  "name": "qazando_cypress",
+  "version": "1.0.0",
+  "description": "Projeto de automação de testes End-to-End (E2E) desenvolvido utilizando **Cypress** com padrão de projeto **Page Object Model (POM)**.",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Caio-Secco/automacao-testes-cypress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Caio-Secco/automacao-testes-cypress/issues"
+  },
+  "homepage": "https://github.com/Caio-Secco/automacao-testes-cypress#readme",
+  "devDependencies": {
+    "chance": "^1.1.13",
+    "cypress": "^15.11.0"
+  }
+}
