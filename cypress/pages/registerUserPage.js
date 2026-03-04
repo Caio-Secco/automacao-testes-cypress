@@ -67,7 +67,7 @@ class RegisterPage {
         cy.visit('/register')
         // O campo senha obrigatório
         cy.get(this.selectorsList().username).clear().type('CaioTeste')
-        cy.get(this.selectorsList().mailField).eq(0).type('caio@teste.com')
+        cy.get(this.selectorsList().mailField).type('caio@teste.com')
         cy.get(this.selectorsList().submitButton).click()
         cy.get(this.selectorsList().GenericErrorMessage).should('be.visible').contains('O campo senha deve ter pelo menos 6 dígitos')
     }
