@@ -2,20 +2,19 @@ class RegisterPage {
 
     selectorsList() {
         const selectors = {
-            registerButton: "[href='/register']",
-            username: "[type='text']",
-            mailField: "[type='email']",
-            password: "[type='password']",
+            username: "#user",
+            mailField: "#email",
+            password: "#password",
             submitButton: '#btnRegister',
-            confirmButton: "[type='button']",
+            confirmButton: ".swal2-confirm",
             confirmRegisterPage: ".account_form",
-            genericConfirmation: "[style='display: block;']",
+            genericConfirmation: "#swal2-title",
             confirmLocation: "#my-account_area",
             GenericErrorMessage: '.errorLabel',
-            loginButton: "[href='/login']",
-            loginMail: "[type='text']",
-            loginPassword: "[type='password']",
-            loginSubmitButton: "[type='submit']",
+            //loginButton: "#btnLogin",
+            loginMail: "#user",
+            loginPassword: "#password",
+            loginSubmitButton: "#btnLogin",
             UserButton: '#userLogged',
             logoutButton: "[href='/#!']",
 
@@ -25,13 +24,13 @@ class RegisterPage {
     }
 
     registerUser() {
-        cy.get(this.selectorsList().registerButton).click()
+        cy.visit('/register')
         cy.get(this.selectorsList().confirmRegisterPage).should('be.visible')
     }
 
     fillRegisterForm(username, email, password) {
         cy.get(this.selectorsList().username).type(username)
-        cy.get(this.selectorsList().mailField).eq(0).type(email)
+        cy.get(this.selectorsList().mailField).type(email)
         cy.get(this.selectorsList().password).type(password)
 
     }
@@ -41,13 +40,13 @@ class RegisterPage {
     }
 
     validateRegisterSuccess() {
-        cy.get(this.selectorsList().genericConfirmation).should('be.visible')
-        cy.get(this.selectorsList().confirmButton).eq(2).click()
+        cy.get(this.selectorsList().genericConfirmation).should('be.visible').contains('Cadastro realizado!')
+        cy.get(this.selectorsList().confirmButton).click()
         cy.get(this.selectorsList().confirmLocation).should('be.visible')
     }
 
         validateRequiredName() {
-        cy.get(this.selectorsList().registerButton).click()
+        cy.visit('/register')
         //Campo Nome obrigatório
         cy.get(this.selectorsList().confirmRegisterPage).should('be.visible')
         cy.get(this.selectorsList().submitButton).click()
@@ -56,7 +55,7 @@ class RegisterPage {
     }
 
     validateRequiredEmail() {
-        cy.get(this.selectorsList().registerButton).click()
+        cy.visit('/register')
         //Campo E-mail obrigatório
         cy.get(this.selectorsList().username).type('CaioTeste')
         cy.get(this.selectorsList().submitButton).click()
@@ -65,7 +64,7 @@ class RegisterPage {
     }
 
     validateRequiredPassword() {
-        cy.get(this.selectorsList().registerButton).click()
+        cy.visit('/register')
         // O campo senha obrigatório
         cy.get(this.selectorsList().username).clear().type('CaioTeste')
         cy.get(this.selectorsList().mailField).eq(0).type('caio@teste.com')

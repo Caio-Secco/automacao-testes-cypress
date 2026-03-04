@@ -2,20 +2,19 @@ class LoginPage {
 
     selectorsList() {
         const selectors = {
-            registerButton: "[href='/register']",
-            username: "[type='text']",
-            mailField: "[type='email']",
-            password: "[type='password']",
+            username: "#user",
+            mailField: "#email",
+            password: "#password",
             submitButton: '#btnRegister',
-            confirmButton: "[type='button']",
+            confirmButton: ".swal2-confirm",
             confirmRegisterPage: ".account_form",
-            genericConfirmation: "[style='display: block;']",
+            genericConfirmation: "#swal2-title",
             confirmLocation: "#my-account_area",
             GenericErrorMessage: '.errorLabel',
-            loginButton: "[href='/login']",
-            loginMail: "[type='text']",
-            loginPassword: "[type='password']",
-            loginSubmitButton: "[type='submit']",
+            //loginButton: "#btnLogin",
+            loginMail: "#user",
+            loginPassword: "#password",
+            loginSubmitButton: "#btnLogin",
             UserButton: '#userLogged',
             logoutButton: "[href='/#!']",
 
@@ -29,23 +28,23 @@ class LoginPage {
     }
 
     loginUser(email, password) {
-        cy.get(this.selectorsList().loginButton).eq(0).contains('Login').click()
+        cy.visit('/login')
         cy.get(this.selectorsList().loginMail).type(email)
         cy.get(this.selectorsList().loginPassword).type(password)
-        cy.get(this.selectorsList().loginSubmitButton).eq(1).click()
+        cy.get(this.selectorsList().loginSubmitButton).click()
     }
 
     validateLogin() {
-        cy.get(this.selectorsList().genericConfirmation).should('be.visible')
-        cy.get(this.selectorsList().confirmButton).eq(2).click()
+        cy.get(this.selectorsList().genericConfirmation).should('be.visible').contains('Login realizado')
+        cy.get(this.selectorsList().confirmButton).click()
         cy.get(this.selectorsList().confirmLocation).should('be.visible')
     }
 
     logoutUser() {
         cy.get(this.selectorsList().UserButton).click()
         cy.get(this.selectorsList().logoutButton).click()
-        cy.get(this.selectorsList().genericConfirmation).should('be.visible')
-        cy.get(this.selectorsList().confirmButton).eq(2).click()
+        cy.get(this.selectorsList().genericConfirmation).should('be.visible')//.contains('Logout realizado')
+        cy.get(this.selectorsList().confirmButton).click()
     }
 
 
