@@ -11,7 +11,6 @@ class LoginPage {
             genericConfirmation: "#swal2-title",
             confirmLocation: "#my-account_area",
             GenericErrorMessage: '.errorLabel',
-            //loginButton: "#btnLogin",
             loginMail: "#user",
             loginPassword: "#password",
             loginSubmitButton: "#btnLogin",
