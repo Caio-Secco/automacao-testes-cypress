@@ -8,18 +8,17 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Cypress tests
-        uses: cypress-io/github-actions@v5
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6
 
       - name: Upload Cypress Results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: Cypress Result
           path: |
             cypress/screenshots
             cypress/videos
-            cypress/results
           if-no-files-found: ignore
