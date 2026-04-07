@@ -24,8 +24,34 @@ Cypress.Commands.add('cadastro', (nome, email, senha) => {
     cy.get('#btnRegister').should('be.visible').and('not.be.disabled').click()
 })
 
+//Comandos sobre carrinho de compras
+
 Cypress.Commands.add('addProductToCart', () => {
     cy.get('.add-to-cart').first().should('exist').click({ force: true })
+})
+
+Cypress.Commands.add('removeProductToCart', () => {
+    cy.get('.fa-shopping-bag').eq(1).click()
+    cy.get('.fa-trash').first().should('be.visible').and('not.be.disabled').click()
+})
+
+Cypress.Commands.add('addProductToCartForDetails', () => {
+    cy.get('.product_wrappers_one').first().click()
+    cy.url().should('include', '/product-details-one')
+    cy.get('.product_details_right_one').should('be.visible')
+    cy.get('select').select('small')
+    cy.get('.product-color-green').click()
+    cy.get('.btn_sm').should('be.visible').and('not.be.disabled').click()
+})
+
+Cypress.Commands.add('removeProductToCartForDetails', () => {
+    cy.visit('/cartTwo')
+    cy.get('.text-danger').first().click()
+})
+
+Cypress.Commands.add('clearProductToCart', () => {
+    cy.visit('/cartTwo')
+    cy.get('button').contains('Clear cart').click()
 })
 
 
