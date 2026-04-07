@@ -1,25 +1,32 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+//Comandos de login
+Cypress.Commands.add('login', (email, password) => {
+    cy.get('#user').type(email)
+    cy.get('#password').type(password)
+    cy.get('#btnLogin').should('be.visible').and('not.be.disabled').click()
+})
+
+//Login via UI
+Cypress.Commands.add('loginViaUI', () => {
+    cy.visit('/login')
+    cy.get('#user').type('caio@test.com')
+    cy.get('#password').type('password')
+    cy.get('#btnLogin').should('be.visible').and('not.be.disabled').click()
+})
+
+//Comandos de cadastros
+
+Cypress.Commands.add('cadastro', (nome, email, senha) => {
+    cy.contains('Cadastro de usuário').should('be.visible')
+    cy.get('#user').type(nome)
+    cy.get('#email').type(email)
+    cy.get('#password').type(senha)
+    cy.get('#btnRegister').should('be.visible').and('not.be.disabled').click()
+})
+
+Cypress.Commands.add('addProductToCart', () => {
+    cy.get('.add-to-cart').first().should('exist').click({ force: true })
+})
+
+
+

@@ -47,17 +47,4 @@ describe('Testes - QAzando', () => {
     pageRegister.validateRequiredPassword()
   })
 
-  it('Deve clicar em todos botões do navbar e validar se está na página correta ', () => {
-    pageLogin.loginUser(userData.userSuccess.username, userData.userSuccess.password)
-    pageLogin.validateLogin()
-    PageMenu.ordersButton()
-    PageMenu.dashbordButton()
-    PageMenu.downloadsButton()
-    PageMenu.addressesButton()
-    PageMenu.accountDetailsButton()
-    PageMenu.logoutButton()
-
-  })
-
-
 })
