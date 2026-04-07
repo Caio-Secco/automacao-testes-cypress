@@ -1,11 +1,13 @@
 import LoginPage from "../pages/loginPage"
 import RegisterPage from "../pages/registerUserPage"
 import userData from "../fixtures/userData.json"
+import MenuPage from "../pages/MenuButton"
 import Chance from 'chance'
 
 const chance = new Chance()
 const pageRegister = new RegisterPage()
 const pageLogin = new LoginPage()
+const PageMenu = new MenuPage()
 
 
 describe('Testes - QAzando', () => {
@@ -44,6 +46,5 @@ describe('Testes - QAzando', () => {
   it('Deve validar senha obrigatória', () => {
     pageRegister.validateRequiredPassword()
   })
-
 
 })
